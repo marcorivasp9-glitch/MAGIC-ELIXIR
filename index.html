@@ -69,7 +69,7 @@
 
   .nav-right{display:flex;align-items:center;gap:26px;}
 
-  /* ---------- TICKER (anuncios, carrusel automático + manual) ---------- */
+  /* ---------- TICKER ---------- */
   .ticker-wrap{
     display:flex;align-items:center;gap:10px;
     background:var(--wine-deep);color:var(--ivory);
@@ -84,9 +84,6 @@
   .ticker-viewport{flex:1;overflow:hidden;text-align:center;}
   .ticker-slide{display:inline-block;}
   .ticker-slide::after{content:" ✦";color:var(--emerald-glow);}
-  @keyframes tickerFade{from{opacity:0;transform:translateY(3px);}to{opacity:1;transform:translateY(0);}}
-  .ticker-slide.fade-in{animation:tickerFade .35s ease;}
-  @media (prefers-reduced-motion: reduce){.ticker-slide.fade-in{animation:none;}}
 
   /* ---------- CARRITO ---------- */
   .cart-btn{
@@ -100,30 +97,7 @@
     font-size:.65rem;line-height:1;min-width:17px;height:17px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;padding:0 3px;
   }
-  .cart-item{
-    display:flex;gap:14px;align-items:center;
-    padding:14px 0;border-bottom:1px solid var(--line);
-  }
-  .cart-item:last-child{border-bottom:none;}
-  .cart-item-media{width:56px;height:56px;flex-shrink:0;background:linear-gradient(150deg,#eef2ea,#d7e6d9);display:flex;align-items:center;justify-content:center;overflow:hidden;}
-  .cart-item-media img{width:100%;height:100%;object-fit:cover;}
-  .cart-item-media svg{width:60%;}
-  .cart-item-info{flex:1;min-width:0;}
-  .cart-item-info h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--wine-deep);}
-  .cart-item-info p{font-size:.78rem;color:#8a7d6d;}
-  .cart-item-actions{display:flex;flex-direction:column;gap:6px;align-items:flex-end;}
-  .cart-item-actions button{font-size:.72rem;border:none;background:none;cursor:pointer;}
-  .cart-buy-mini{color:var(--wine-deep);text-decoration:underline;}
-  .cart-remove-mini{color:#a15b5b;text-decoration:underline;}
-  .cart-select-arrow{
-    font-size:1rem;color:#b9c2b6;transition:color .2s,transform .15s;
-    text-decoration:none !important;
-  }
-  .cart-select-arrow[data-selected="1"]{color:var(--wine);transform:translateX(2px);}
-  .cart-bulk-row{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);}
-  .cart-bulk-hint{font-size:.74rem;color:#8a7d6d;margin-top:8px;text-align:center;}
-  .cart-empty{font-size:.9rem;color:#8a7d6d;text-align:center;padding:30px 0;}
-
+  
   /* ---------- HERO ---------- */
   .hero{
     max-width:1180px;margin:0 auto;
@@ -175,17 +149,6 @@
     overflow:hidden;
   }
   .hero-art svg{width:46%;filter:drop-shadow(0 0 26px rgba(61,220,132,.35));}
-  .hero-showcase-img{width:100%;height:100%;object-fit:cover;}
-  .hero-showcase-caption{
-    position:absolute;left:0;right:0;bottom:0;
-    padding:18px 22px 16px;
-    background:linear-gradient(to top, rgba(7,10,8,.8), transparent);
-    color:#eaf5ee;font-family:'Cormorant Garamond',serif;font-size:1.15rem;
-    text-align:center;letter-spacing:.02em;
-  }
-  @keyframes heroFade{from{opacity:0;}to{opacity:1;}}
-  .hero-showcase-img.fade-in{animation:heroFade .5s ease;}
-  @media (prefers-reduced-motion: reduce){.hero-showcase-img.fade-in{animation:none;}}
 
   /* ---------- SECTION HEADS ---------- */
   .section-head{
@@ -207,7 +170,6 @@
     background:#fffdf9;
     border:1px solid var(--line);
     display:flex;flex-direction:column;
-    transition:background .25s, border-color .25s;
   }
   .card-media{
     aspect-ratio:1/1.1;
@@ -217,17 +179,6 @@
     position:relative;
   }
   .card-media img{width:100%;height:100%;object-fit:cover;}
-  .card-media svg{width:34%;filter:drop-shadow(0 10px 16px rgba(15,61,39,.25));}
-  .save-btn{
-    position:absolute;top:10px;right:10px;z-index:2;
-    width:34px;height:34px;border-radius:50%;
-    background:rgba(255,253,249,.9);border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;transition:background .2s,transform .15s;
-  }
-  .save-btn:hover{transform:scale(1.08);}
-  .save-btn svg{width:17px;height:17px;stroke:var(--wine-deep);fill:none;transition:fill .2s;}
-  .save-btn[data-saved="1"] svg{fill:var(--wine-deep);}
   .card-body{padding:26px 24px 28px;display:flex;flex-direction:column;flex:1;}
   .card-body .kicker{font-size:.78rem;letter-spacing:.1em;color:var(--bronze);margin-bottom:6px;}
   .card-body h3{font-size:1.55rem;color:var(--wine-deep);margin-bottom:8px;}
@@ -237,7 +188,6 @@
     padding-top:16px;border-top:1px solid var(--line);
   }
   .price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--charcoal);}
-  .oz{font-size:.8rem;color:#8a7d6d;}
   .buy-btn{
     font-size:.85rem;letter-spacing:.03em;
     padding:10px 18px;
@@ -246,398 +196,35 @@
     transition:background .2s;
   }
   .buy-btn:hover{background:var(--wine);}
-  .card-del{
-    align-self:flex-end;
-    margin-top:10px;
-    font-size:.75rem;color:#a15b5b;background:none;border:none;cursor:pointer;
-    text-decoration:underline;
-  }
-
-  /* ---------- ABOUT STRIP ---------- */
-  .strip{
-    background:var(--wine-deep);color:var(--ivory);
-    padding:64px 32px;
-  }
-  .strip-inner{
-    max-width:1180px;margin:0 auto;
-    display:grid;grid-template-columns:repeat(3,1fr);gap:40px;
-    text-align:center;
-  }
-  .strip-inner h3{font-size:1.3rem;margin-bottom:10px;color:#e9c98f;}
-  .strip-inner p{font-size:.9rem;line-height:1.6;color:#e6dcd0;}
 
   /* ---------- FOOTER ---------- */
-  footer{padding:50px 32px 40px;text-align:center;color:#8a7d6d;font-size:.85rem;border-top:1px solid var(--line);transition:background .25s,color .25s,border-color .25s;}
+  footer{padding:50px 32px 40px;text-align:center;color:#8a7d6d;font-size:.85rem;border-top:1px solid var(--line);}
 
-  /* ---------- GEAR / SETTINGS ---------- */
-  .gear-btn{
-    position:fixed;right:24px;bottom:24px;z-index:55;
-    width:46px;height:46px;border-radius:50%;
-    background:#fffdf9;border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;box-shadow:0 4px 14px rgba(42,36,32,.18);
-    transition:background .25s, border-color .25s, transform .2s;
-  }
-  .gear-btn:hover{transform:rotate(25deg);}
-  .gear-btn svg{width:22px;height:22px;stroke:var(--wine-deep);}
-
-  .settings-panel{
-    position:fixed;right:24px;bottom:80px;z-index:55;
-    width:270px;
-    background:var(--ivory);
-    border:1px solid var(--line);
-    box-shadow:0 10px 30px rgba(42,36,32,.2);
-    padding:22px 20px;
-    display:none;
-    transition:background .25s, border-color .25s;
-  }
-  .settings-panel.show{display:block;}
-  .settings-panel h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--wine-deep);margin-bottom:16px;letter-spacing:.02em;}
-  .settings-row{margin-bottom:18px;}
-  .settings-row .label{font-size:.78rem;letter-spacing:.04em;color:#8a7d6d;margin-bottom:8px;display:block;}
-  .size-toggle{display:flex;border:1px solid var(--line);}
-  .size-toggle button{
-    flex:1;background:none;border:none;padding:8px 0;cursor:pointer;
-    font-family:'Jost',sans-serif;color:var(--charcoal);border-right:1px solid var(--line);
-  }
-  .size-toggle button:last-child{border-right:none;}
-  .size-toggle button[data-active="1"]{background:var(--wine-deep);color:var(--ivory);}
-  .size-toggle button:nth-child(1){font-size:.75rem;}
-  .size-toggle button:nth-child(2){font-size:.95rem;}
-  .size-toggle button:nth-child(3){font-size:1.15rem;}
-
-  .switch-row{display:flex;align-items:center;justify-content:space-between;}
-  .switch{position:relative;width:42px;height:24px;flex-shrink:0;}
-  .switch input{opacity:0;width:0;height:0;}
-  .slider-toggle{
-    position:absolute;cursor:pointer;inset:0;
-    background:#ddd2bf;transition:.2s;border-radius:24px;
-  }
-  .slider-toggle::before{
-    content:"";position:absolute;height:18px;width:18px;left:3px;bottom:3px;
-    background:#fff;transition:.2s;border-radius:50%;
-  }
-  .switch input:checked + .slider-toggle{background:var(--wine-deep);}
-  .switch input:checked + .slider-toggle::before{transform:translateX(18px);}
-
-  .settings-divider{border-top:1px solid var(--line);margin:16px 0;}
-  .reset-link{background:none;border:none;font-size:.75rem;color:#8a7d6d;cursor:pointer;text-decoration:underline;padding:0;}
-
-  .dev-zone{margin-top:14px;padding-top:12px;border-top:1px dashed transparent;}
-  .dev-link{
-    background:none;border:none;font-size:.68rem;color:#b7ac9b;cursor:pointer;
-    padding:0;text-decoration:none;letter-spacing:.02em;
-  }
-  .dev-link:hover{color:#8a7d6d;}
-  .dev-active-row{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:#8a7d6d;}
-  .dev-active-row .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#3d6b45;margin-right:6px;}
-  .dev-links{display:flex;gap:14px;margin-top:8px;}
-  .dev-links button{background:none;border:none;font-size:.72rem;color:var(--wine-deep);cursor:pointer;text-decoration:underline;padding:0;}
-
-  /* ---------- MODALS ---------- */
-  .overlay{
-    position:fixed;inset:0;background:rgba(42,36,32,.55);
-    display:none;align-items:center;justify-content:center;z-index:60;
-    padding:20px;
-  }
-  .overlay.show{display:flex;}
-  .modal{
-    background:var(--ivory);
-    width:100%;max-width:420px;
-    padding:36px 32px;
-    border:1px solid var(--line);
-    position:relative;
-    transition:background .25s, border-color .25s;
-  }
-  .modal h3{font-size:1.5rem;color:var(--wine-deep);margin-bottom:6px;}
-  .modal p.hint{font-size:.85rem;color:#8a7d6d;margin-bottom:22px;}
-  .modal label{display:block;font-size:.8rem;color:#5c5348;margin-bottom:6px;margin-top:16px;}
-  .modal input[type=text],
-  .modal input[type=password],
-  .modal input[type=number]{
-    width:100%;padding:11px 12px;
-    border:1px solid var(--line);background:#fffdf9;
-    font-family:'Jost',sans-serif;font-size:.95rem;
-    color:var(--charcoal);
-  }
-  .modal input[type=file]{margin-top:4px;font-size:.85rem;width:100%;}
-  .modal .row-actions{display:flex;gap:12px;margin-top:26px;}
-  .modal .close-x{
-    position:absolute;top:14px;right:16px;
-    background:none;border:none;font-size:1.1rem;cursor:pointer;color:#8a7d6d;
-  }
-  .error-msg{color:#a15b5b;font-size:.82rem;margin-top:10px;display:none;}
-  .ok-msg{color:#3d6b45;font-size:.82rem;margin-top:10px;display:none;}
-
-  .admin-list{margin-top:22px;max-height:180px;overflow:auto;border-top:1px solid var(--line);padding-top:14px;}
-  .admin-list div{display:flex;justify-content:space-between;font-size:.85rem;padding:6px 0;}
-  .admin-list button{border:none;background:none;color:#a15b5b;cursor:pointer;font-size:.8rem;text-decoration:underline;}
-
-  /* ---------- DARK MODE (paleta Magic Elixir: negro + esmeralda + dorado) ---------- */
-  body.dark{background:#070a08;color:#eaf5ee;}
-  body.dark header{background:rgba(5,8,6,.92);border-bottom-color:#16241a;}
-  body.dark .brand-name{color:#d4af6a;}
-  body.dark .brand-tag{color:#3ddc84;}
-  body.dark .hero-eyebrow{color:#d4af6a;}
-  body.dark .hero h1{color:#eaf5ee;text-shadow:0 0 24px rgba(61,220,132,.25);}
-  body.dark .hero p{color:#a9bdae;}
-  body.dark .btn{border-color:#d4af6a;color:#d4af6a;}
-  body.dark .btn:hover{background:#d4af6a;color:#070a08;}
-  body.dark .btn-solid{background:#1f7a4d;border-color:#1f7a4d;color:#eaf5ee;}
-  body.dark .btn-solid:hover{background:#29c17d;}
-  body.dark .section-head h2{color:#eaf5ee;}
-  body.dark .section-head span{color:#8fa696;}
-  body.dark section.catalog{border-top-color:#16241a;}
-  body.dark .card{background:#0c110d;border-color:#16241a;}
-  body.dark .card-body h3{color:#d4af6a;}
-  body.dark .card-body .kicker{color:#3ddc84;}
-  body.dark .card-body p.desc{color:#a9bdae;}
-  body.dark .card-footer{border-top-color:#16241a;}
-  body.dark .price{color:#eaf5ee;}
-  body.dark .oz{color:#8fa696;}
-  body.dark .buy-btn{background:#1f7a4d;}
-  body.dark .buy-btn:hover{background:#29c17d;}
-  body.dark .card-del{color:#e08b8b;}
-  body.dark .save-btn{background:rgba(12,17,13,.85);border-color:#16241a;}
-  body.dark .save-btn svg{stroke:#d4af6a;}
-  body.dark .save-btn[data-saved="1"] svg{fill:#d4af6a;}
-  body.dark footer{color:#8fa696;border-top-color:#16241a;background:#070a08;}
-  body.dark footer .brand-name{color:#d4af6a;}
-  body.dark .gear-btn{background:#0c110d;border-color:#16241a;}
-  body.dark .gear-btn svg{stroke:#d4af6a;}
-  body.dark .cart-btn svg{stroke:#d4af6a;}
-  body.dark .cart-count{background:#1f7a4d;color:#eaf5ee;}
-  body.dark .settings-panel{background:#0c110d;border-color:#16241a;}
-  body.dark .settings-panel h4{color:#d4af6a;}
-  body.dark .settings-row .label{color:#8fa696;}
-  body.dark .size-toggle{border-color:#16241a;}
-  body.dark .size-toggle button{color:#eaf5ee;border-right-color:#16241a;}
-  body.dark .size-toggle button[data-active="1"]{background:#1f7a4d;color:#eaf5ee;}
-  body.dark .settings-divider{border-top-color:#16241a;}
-  body.dark .reset-link{color:#8fa696;}
-  body.dark .dev-link{color:#4a5a4e;}
-  body.dark .dev-link:hover{color:#8fa696;}
-  body.dark .dev-active-row{color:#8fa696;}
-  body.dark .dev-links button{color:#d4af6a;}
-  body.dark .modal{background:#0c110d;border-color:#16241a;color:#eaf5ee;}
-  body.dark .modal h3{color:#d4af6a;}
-  body.dark .modal p.hint{color:#8fa696;}
-  body.dark .modal label{color:#a9bdae;}
-  body.dark .modal input[type=text],
-  body.dark .modal input[type=password],
-  body.dark .modal input[type=number]{background:#070a08;border-color:#16241a;color:#eaf5ee;}
-  body.dark .modal .close-x{color:#8fa696;}
-  body.dark .admin-list{border-top-color:#16241a;}
-  body.dark .ticker-wrap{background:#0c110d;color:#eaf5ee;border-bottom:1px solid #16241a;}
-  body.dark .ticker-slide::after{color:#d4af6a;}
-  body.dark .ticker-arrow{color:#eaf5ee;}
-  body.dark .cart-item{border-bottom-color:#16241a;}
-  body.dark .cart-item-info h4{color:#d4af6a;}
-  body.dark .cart-item-info p{color:#8fa696;}
-  body.dark .cart-buy-mini{color:#3ddc84;}
-  body.dark .cart-empty{color:#8fa696;}
-  body.dark .cart-select-arrow{color:#4a5a4e;}
-  body.dark .cart-select-arrow[data-selected="1"]{color:#3ddc84;}
-  body.dark .cart-bulk-row{border-top-color:#16241a;}
-  body.dark .cart-bulk-hint{color:#8fa696;}
-
-  /* ---------- FILTROS DEL CATÁLOGO ---------- */
-  .filters-bar{
-    max-width:1180px;margin:0 auto 34px;padding:0 32px;
-    display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
-  }
-  .filter-group{display:flex;flex-wrap:wrap;gap:8px;}
-  .filter-chip{
-    padding:8px 18px;border:1px solid var(--line);background:transparent;
-    font-family:'Jost',sans-serif;font-size:.82rem;letter-spacing:.02em;color:var(--charcoal);
-    cursor:pointer;transition:background .2s,color .2s,border-color .2s;
-  }
-  .filter-chip[data-active="1"]{background:var(--wine-deep);border-color:var(--wine-deep);color:var(--ivory);}
-  .filter-price select{
-    padding:9px 14px;border:1px solid var(--line);background:#fffdf9;
-    font-family:'Jost',sans-serif;font-size:.82rem;color:var(--charcoal);cursor:pointer;
-  }
-  body.dark .filter-chip{border-color:#16241a;color:#eaf5ee;}
-  body.dark .filter-chip[data-active="1"]{background:#1f7a4d;border-color:#1f7a4d;}
-  body.dark .filter-price select{background:#0c110d;border-color:#16241a;color:#eaf5ee;}
-
-  /* ---------- GÉNERO EN MODAL ADMIN ---------- */
-  .gender-options{display:flex;gap:10px;margin-top:6px;}
-  .gender-options label{
-    flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
-    border:1px solid var(--line);padding:9px 6px;font-size:.82rem;cursor:pointer;
-    margin:0;color:var(--charcoal);transition:background .2s,border-color .2s,color .2s;
-  }
-  .gender-options input{accent-color:var(--wine-deep);}
-  .gender-options label:has(input:checked){background:var(--wine-deep);color:var(--ivory);border-color:var(--wine-deep);}
-  body.dark .gender-options label{border-color:#16241a;color:#eaf5ee;}
-  body.dark .gender-options label:has(input:checked){background:#1f7a4d;border-color:#1f7a4d;}
-  .card-gender-tag{
-    display:inline-block;font-size:.68rem;letter-spacing:.06em;color:#8a7d6d;
-    border:1px solid var(--line);padding:2px 8px;margin-left:8px;text-transform:uppercase;
-  }
-  body.dark .card-gender-tag{border-color:#16241a;color:#8fa696;}
-
-  /* ---------- FLECHAS DE GALERÍA EN LA TARJETA (aparecen al pasar el mouse) ---------- */
-  .card-media{position:relative;}
-  .img-arrow{
-    position:absolute;top:50%;transform:translateY(-50%);
-    width:32px;height:32px;border-radius:50%;
-    background:rgba(255,253,249,.85);border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;font-size:1.1rem;color:var(--wine-deep);
-    opacity:0;transition:opacity .2s;z-index:2;
-  }
-  .card-media:hover .img-arrow{opacity:1;}
-  .img-arrow.prev{left:10px;}
-  .img-arrow.next{right:10px;}
-  .img-dots{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:2;}
-  .img-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55);}
-  .img-dots span[data-active="1"]{background:#fff;}
-  body.dark .img-arrow{background:rgba(12,17,13,.85);border-color:#16241a;color:#d4af6a;}
-
-  /* ---------- BIENVENIDA / OFERTA DE REGISTRO ---------- */
-  .welcome-modal{max-width:760px;padding:0;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
-  .welcome-art{
-    background:linear-gradient(150deg,#0f3d27,#081611);
-    display:flex;align-items:center;justify-content:center;min-height:260px;
-  }
-  .welcome-art svg{width:56%;filter:drop-shadow(0 0 26px rgba(61,220,132,.35));}
-  .welcome-body{padding:40px 34px;text-align:center;position:relative;}
-  .welcome-body h3{font-size:1.15rem;letter-spacing:.14em;color:var(--bronze);margin-bottom:18px;text-transform:uppercase;}
-  .welcome-body .big-offer{font-size:2.4rem;color:var(--wine-deep);margin-bottom:10px;}
-  .welcome-body p.hint{margin-bottom:22px;}
-  .welcome-body input[type=email]{
-    width:100%;padding:12px 14px;border:1px solid var(--line);background:#fffdf9;
-    font-family:'Jost',sans-serif;font-size:.95rem;margin-bottom:14px;
-  }
-  .welcome-noThanks{display:block;margin-top:16px;font-size:.8rem;color:#8a7d6d;text-decoration:underline;background:none;border:none;cursor:pointer;width:100%;}
-  body.dark .welcome-body input[type=email]{background:#070a08;border-color:#16241a;color:#eaf5ee;}
-  @media (max-width:640px){
-    .welcome-modal{grid-template-columns:1fr;}
-    .welcome-art{display:none;}
-  }
-
-  /* ---------- BOTÓN FLOTANTE DE WHATSAPP (junto al de preferencias) ---------- */
+  /* ---------- WHATSAPP FLOTANTE ---------- */
   .wa-btn{
-    position:fixed;right:80px;bottom:24px;z-index:55;
-    width:46px;height:46px;border-radius:50%;
-    background:#25D366;border:1px solid #1ea952;
+    position:fixed;right:24px;bottom:24px;z-index:55;
+    width:50px;height:50px;border-radius:50%;
+    background:#25D366;border:none;
     display:flex;align-items:center;justify-content:center;
     cursor:pointer;box-shadow:0 4px 14px rgba(42,36,32,.25);
     transition:transform .2s;
   }
-  .wa-btn:hover{transform:scale(1.07);}
-  .wa-btn svg{width:24px;height:24px;fill:#fff;}
-  .wa-tooltip{
-    position:absolute;right:56px;top:50%;transform:translateY(-50%);
-    background:var(--charcoal);color:#fff;font-size:.72rem;letter-spacing:.02em;
-    padding:7px 12px;white-space:nowrap;border-radius:4px;
-    opacity:0;pointer-events:none;transition:opacity .2s;
-  }
-  .wa-tooltip::after{
-    content:"";position:absolute;left:100%;top:50%;transform:translateY(-50%);
-    border:5px solid transparent;border-left-color:var(--charcoal);
-  }
-  .wa-btn:hover .wa-tooltip{opacity:1;}
-
-  /* ---------- CONTROL DE ZOOM (reemplaza el de tamaño de letra) ---------- */
-  .zoom-control{
-    display:flex;align-items:center;gap:6px;
-    background:var(--wine-deep);border-radius:22px;padding:5px 6px;
-  }
-  .zoom-control button{
-    width:28px;height:28px;border-radius:50%;border:none;background:rgba(255,255,255,.12);
-    color:var(--ivory);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
-    transition:background .2s;
-  }
-  .zoom-control button:hover{background:rgba(255,255,255,.25);}
-  .zoom-control .zoom-value{flex:1;text-align:center;color:var(--ivory);font-size:.82rem;letter-spacing:.02em;}
-  .zoom-control .zoom-reset{
-    width:auto;border-radius:14px;padding:0 12px;font-size:.72rem;background:transparent;
-    border:1px solid rgba(255,255,255,.4);
-  }
-  body.dark .zoom-control{background:#1f7a4d;}
-
-  /* ---------- CARRITO REDISEÑADO (checkbox grande + cantidad) ---------- */
-  .cart-item{position:relative;align-items:flex-start;padding-right:6px;}
-  .cart-item-trash{
-    position:absolute;top:12px;right:0;background:none;border:none;cursor:pointer;
-    color:#a15b5b;padding:2px;
-  }
-  .cart-item-trash svg{width:17px;height:17px;}
-  .cart-item-info .cart-type{font-size:.75rem;color:#8a7d6d;margin-top:2px;}
-  .cart-item-media{width:64px;height:64px;}
-  .cart-check{
-    width:28px;height:28px;flex-shrink:0;border:2px solid var(--line);
-    display:flex;align-items:center;justify-content:center;cursor:pointer;
-    background:#fffdf9;transition:background .15s,border-color .15s;
-  }
-  .cart-check svg{width:16px;height:16px;stroke:#fff;opacity:0;transition:opacity .15s;}
-  .cart-check[data-selected="1"]{background:var(--wine-deep);border-color:var(--wine-deep);}
-  .cart-check[data-selected="1"] svg{opacity:1;}
-  .cart-qty{display:flex;align-items:center;gap:8px;margin-top:6px;}
-  .cart-qty button{
-    width:24px;height:24px;border:1px solid var(--line);background:#fffdf9;cursor:pointer;
-    font-size:.9rem;display:flex;align-items:center;justify-content:center;color:var(--wine-deep);
-  }
-  .cart-qty span{font-size:.85rem;min-width:14px;text-align:center;}
-  body.dark .cart-check{background:#0c110d;border-color:#16241a;}
-  body.dark .cart-qty button{background:#0c110d;border-color:#16241a;color:#d4af6a;}
-  body.dark .cart-item-trash{color:#e08b8b;}
-  body.dark .cart-item-info .cart-type{color:#8fa696;}
+  .wa-btn:hover{transform:scale(1.08);}
+  .wa-btn svg{width:28px;height:28px;fill:#fff;}
 
   @media (max-width: 880px){
     .hero{grid-template-columns:1fr;padding:56px 24px 64px;}
     .grid{grid-template-columns:1fr;gap:26px;padding:0 24px;}
-    .strip-inner{grid-template-columns:1fr;gap:30px;}
-    nav ul{gap:20px;font-size:.85rem;}
-    .nav-inner{padding:16px 20px;}
-    .settings-panel{right:16px;left:16px;width:auto;bottom:80px;}
-    .gear-btn{right:16px;bottom:16px;}
-    .wa-btn{right:70px;bottom:16px;}
-    .filters-bar{padding:0 24px;flex-direction:column;align-items:stretch;}
-  }
-
-  /* ---------- AJUSTES FINOS PARA TELÉFONO ---------- */
-  @media (max-width:480px){
-    .hero{padding:44px 18px 48px;gap:34px;}
-    .hero h1{font-size:clamp(2rem,8vw,2.6rem);}
-    .hero p{font-size:.98rem;}
-    .btn{padding:13px 26px;font-size:.88rem;width:100%;text-align:center;}
-    .nav-inner{padding:14px 16px;}
-    .brand-name{font-size:1.2rem;}
-    .brand-tag{font-size:.6rem;}
-    nav ul{gap:14px;font-size:.78rem;}
-    .section-head{padding:0 18px;margin-bottom:30px;flex-direction:column;align-items:flex-start;gap:6px;}
-    .section-head h2{font-size:1.7rem;}
-    .grid{padding:0 18px;gap:20px;}
-    .card-body{padding:20px 18px 22px;}
-    .card-body h3{font-size:1.3rem;}
-    .strip{padding:44px 18px;}
-    .filters-bar{padding:0 18px;gap:10px;}
-    .filter-chip{padding:7px 14px;font-size:.76rem;}
-    .modal{padding:28px 20px;max-width:100%;}
-    .welcome-body{padding:30px 22px;}
-    .welcome-body .big-offer{font-size:1.9rem;}
-    .gear-btn,.wa-btn{width:42px;height:42px;}
-    .gear-btn{right:14px;bottom:14px;}
-    .wa-btn{right:62px;bottom:14px;}
-    .wa-tooltip{right:50px;font-size:.68rem;}
-    .cart-item-media{width:52px;height:52px;}
-    footer{padding:40px 18px 32px;font-size:.8rem;}
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="ticker-wrap" id="tickerWrap">
-    <button class="ticker-arrow" id="tickerPrev" aria-label="Anuncio anterior">‹</button>
+  <div class="ticker-wrap">
     <div class="ticker-viewport">
-      <span class="ticker-slide" id="tickerSlide"></span>
+      <span class="ticker-slide">Envíos seguros y pedidos directos al WhatsApp ✦ Santiago, Rep. Dominicana</span>
     </div>
-    <button class="ticker-arrow" id="tickerNext" aria-label="Siguiente anuncio">›</button>
   </div>
   <div class="nav-inner">
     <div class="brand">
@@ -649,26 +236,18 @@
         <li><a href="#catalogo">Colección</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
       </ul></nav>
-      <button class="cart-btn" id="cartBtn" aria-label="Carrito guardado">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="9" cy="21" r="1"></circle>
-          <circle cx="20" cy="21" r="1"></circle>
-          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-        </svg>
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
     </div>
   </div>
 </header>
 
 <section class="hero">
   <div>
-    <div class="hero-eyebrow">PERFUMERÍA FINA · REPÚBLICA DOMINICANA</div>
+    <div class="hero-eyebrow">PERFUMERÍA FINA · REPÚBLica DOMINICANA</div>
     <h1>Fragancias que se quedan en la memoria de quien las conoce.</h1>
-    <p>Una colección curada de esencias importadas, pensadas para durar todo el día y dejar huella desde el primer encuentro.</p>
+    <p>Elige tu perfume favorito y pídelo al instante con un solo clic a nuestro WhatsApp.</p>
     <a href="#catalogo" class="btn btn-solid">Ver colección</a>
   </div>
-  <div class="hero-art" id="heroArt">
+  <div class="hero-art">
     <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg">
       <rect x="40" y="10" width="40" height="22" rx="4" fill="#b8923f"/>
       <rect x="50" y="0" width="20" height="14" rx="2" fill="#8a6e2f"/>
@@ -683,42 +262,10 @@
 <section class="catalog" id="catalogo">
   <div class="section-head">
     <h2>La colección</h2>
-    <span id="countLabel">3 fragancias</span>
+    <span id="countLabel">Cargando perfumes...</span>
   </div>
-  <div class="filters-bar">
-    <div class="filter-group" id="genderFilter">
-      <button class="filter-chip" data-gender="todos" data-active="1">Todos</button>
-      <button class="filter-chip" data-gender="hombre">Hombre</button>
-      <button class="filter-chip" data-gender="mujer">Mujer</button>
-      <button class="filter-chip" data-gender="unisex">Unisex</button>
-    </div>
-    <div class="filter-price">
-      <select id="priceFilter">
-        <option value="todos">Todos los precios</option>
-        <option value="0-50">Menos de $50</option>
-        <option value="50-100">$50 - $100</option>
-        <option value="100-150">$100 - $150</option>
-        <option value="150-9999">Más de $150</option>
-      </select>
-    </div>
-  </div>
-  <div class="grid" id="grid"></div>
-</section>
-
-<section class="strip" id="nosotros">
-  <div class="strip-inner">
-    <div>
-      <h3>Origen certero</h3>
-      <p>Cada frasco es seleccionado por su calidad y fijación, no solo por su nombre.</p>
-    </div>
-    <div>
-      <h3>Entrega personal</h3>
-      <p>Coordinamos tu compra directamente por WhatsApp, sin intermediarios ni esperas.</p>
-    </div>
-    <div>
-      <h3>Atención cercana</h3>
-      <p>Resolvemos tus dudas sobre notas, duración y ocasión antes de que decidas.</p>
-    </div>
+  <div class="grid" id="grid">
+    <!-- Los perfumes se cargarán automáticamente aquí desde tu nube -->
   </div>
 </section>
 
@@ -727,846 +274,47 @@
     <span class="brand-name serif">MAGIC ELIXIR</span>
     <span class="brand-tag">Aromas que te definen</span>
   </div>
-  Perfumería fina · Santiago de los Caballeros, República Dominicana<br>
-  Pedidos y consultas por WhatsApp: 809-714-0957
+  Santiago de los Caballeros, República Dominicana
 </footer>
 
-<!-- MODAL: carrito -->
-<div class="overlay" id="cartOverlay">
-  <div class="modal">
-    <button class="close-x" data-close="cartOverlay">✕</button>
-    <h3>Tu carrito</h3>
-    <p class="hint">Perfumes que guardaste para decidir con calma.</p>
-    <div id="cartList"></div>
-  </div>
-</div>
-
-<!-- WHATSAPP FLOTANTE (ayuda personalizada) -->
-<button class="wa-btn" id="waBtn" aria-label="Ayuda personalizada por WhatsApp">
-  <span class="wa-tooltip">Ayuda personalizada</span>
-  <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.45 1.27 4.9L2 22l5.25-1.38a9.96 9.96 0 0 0 4.79 1.22h.01c5.52 0 10-4.48 10-10s-4.49-9.84-10.01-9.84zm5.86 14.12c-.25.7-1.45 1.34-2 1.42-.51.08-1.16.11-1.87-.12-.43-.13-.99-.32-1.7-.63-3-1.3-4.96-4.32-5.11-4.52-.15-.2-1.22-1.62-1.22-3.1 0-1.47.77-2.19 1.05-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.08.92 2.23.07.15.12.33.02.53-.1.2-.15.33-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.28.1 1.75.83 2.05 .98.3.15.5.23.57.36.08.13.08.75-.17 1.45z"/></svg>
-</button>
-
-<!-- GEAR / SETTINGS -->
-<button class="gear-btn" id="gearBtn" aria-label="Preferencias">
-  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="3"></circle>
-    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-  </svg>
-</button>
-
-<div class="settings-panel" id="settingsPanel">
-  <h4>Preferencias</h4>
-
-  <div class="settings-row">
-    <span class="label">Zoom de la página</span>
-    <div class="zoom-control" id="zoomControl">
-      <button id="zoomOut" aria-label="Reducir">−</button>
-      <span class="zoom-value" id="zoomValue">80%</span>
-      <button id="zoomIn" aria-label="Aumentar">+</button>
-      <button class="zoom-reset" id="zoomReset">Restablecer</button>
-    </div>
-  </div>
-
-  <div class="settings-row switch-row">
-    <span class="label" style="margin-bottom:0;">Fondo oscuro</span>
-    <label class="switch">
-      <input type="checkbox" id="darkToggle">
-      <span class="slider-toggle"></span>
-    </label>
-  </div>
-
-  <div class="settings-divider"></div>
-  <button class="reset-link" id="resetPrefs">Restablecer preferencias</button>
-
-  <div class="dev-zone" id="devZone">
-    <button class="dev-link" id="devLink">Acceso desarrollador</button>
-  </div>
-</div>
-
-<!-- MODAL: password -->
-<div class="overlay" id="loginOverlay">
-  <div class="modal">
-    <button class="close-x" data-close="loginOverlay">✕</button>
-    <h3>Acceso de desarrollador</h3>
-    <p class="hint">Ingresa la contraseña para habilitar la edición del catálogo.</p>
-    <label for="pwInput">Contraseña</label>
-    <input type="password" id="pwInput" placeholder="••••••">
-    <p class="error-msg" id="pwError">Contraseña incorrecta.</p>
-    <div class="row-actions">
-      <button class="btn btn-solid" id="pwSubmit" style="flex:1;">Entrar</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL: bienvenida / oferta de registro (solo primera visita) -->
-<div class="overlay" id="welcomeOverlay">
-  <div class="modal welcome-modal">
-    <button class="close-x" data-close="welcomeOverlay" id="welcomeClose">✕</button>
-    <div class="welcome-art">
-      <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg">
-        <rect x="40" y="10" width="40" height="22" rx="4" fill="#b8923f"/>
-        <rect x="50" y="0" width="20" height="14" rx="2" fill="#8a6e2f"/>
-        <rect x="30" y="32" width="60" height="150" rx="10" fill="#0e1a13" stroke="#3ddc84" stroke-width="1.5" opacity="0.9"/>
-        <rect x="38" y="70" width="44" height="60" fill="#3ddc84" opacity="0.28"/>
-      </svg>
-    </div>
-    <div class="welcome-body">
-      <h3>Magic Elixir</h3>
-      <div class="big-offer">5% OFF</div>
-      <p class="hint">Regístrate para recibir ofertas exclusivas y obtén un 5% de descuento en tu primera compra.</p>
-      <input type="email" id="welcomeEmail" placeholder="Escribe tu correo electrónico*">
-      <p class="error-msg" id="welcomeError">Escribe un correo válido.</p>
-      <p class="ok-msg" id="welcomeOk">¡Listo! Ya tienes tu 5% de descuento. Menciónalo al escribirnos por WhatsApp.</p>
-      <button class="btn btn-solid" id="welcomeSubmit" style="width:100%;">Continuar</button>
-      <button class="welcome-noThanks" id="welcomeSkip">No, gracias</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL: admin panel -->
-<div class="overlay" id="adminOverlay">
-  <div class="modal">
-    <button class="close-x" data-close="adminOverlay">✕</button>
-    <h3>Agregar perfume</h3>
-    <p class="hint">Completa los datos del nuevo perfume.</p>
-
-    <label for="pName">Nombre del perfume</label>
-    <input type="text" id="pName" placeholder="Ej. Nuit de Paris">
-
-    <label for="pOz">Onzas</label>
-    <input type="number" id="pOz" min="0" step="0.1" placeholder="Ej. 3.4">
-
-    <label for="pPrice">Precio (opcional, en USD)</label>
-    <input type="number" id="pPrice" min="0" step="1" placeholder="Ej. 40">
-
-    <label>¿Para quién es?</label>
-    <div class="gender-options" id="pGenderOptions">
-      <label><input type="radio" name="pGender" value="hombre"> Hombre</label>
-      <label><input type="radio" name="pGender" value="mujer"> Mujer</label>
-      <label><input type="radio" name="pGender" value="unisex"> Unisex</label>
-    </div>
-
-    <label for="pPhoto">Fotos del perfume (puedes elegir varias)</label>
-    <input type="file" id="pPhoto" accept="image/*" multiple>
-
-    <p class="error-msg" id="adminError">Completa nombre, onzas y foto.</p>
-    <p class="ok-msg" id="adminOk">Perfume agregado.</p>
-
-    <div class="row-actions">
-      <button class="btn btn-solid" id="pSubmit" style="flex:1;">Agregar al catálogo</button>
-    </div>
-
-    <div class="admin-list" id="adminList"></div>
-  </div>
-</div>
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/18090000000?text=Hola,%20quiero%20información%20sobre%20los%20perfumes" target="_blank" class="wa-btn" aria-label="Abrir WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
 
 <script>
-  const WHATSAPP_NUMBER = "18097140957"; // 809-714-0957 con código de país RD
-  const DEV_PASSWORD = "123456";
-  const STORAGE_KEY = "magicelixir_perfumes_v1";
-  const PREFS_KEY = "magicelixir_prefs_v1";
-  const CART_KEY = "magicelixir_cart_v1";
+  // AQUÍ CONECTAMOS TU PÁGINA A UNA HOJA DE GOOGLE SHEETS AUTOMÁTICA
+  // Cada vez que agregues una línea en tu Excel/Google Sheets, aparecerá aquí al instante.
+  const SHEET_URL = 'https://opensheet.elk.sh/TU_ID_DE_GOOGLE_SHEETS/perfumes';
 
-  const DEFAULT_PERFUMES = [
-    { id:"default-1", name:"Chanel N°5", kicker:"Eau de Parfum", gender:"mujer",
-      desc:"El icónico floral aldehídico de Chanel: jazmín, rosa de mayo y una base cálida de sándalo y vainilla. Elegancia atemporal.",
-      oz:"3.4", price:"165", images:[] },
-    { id:"default-2", name:"Dior Sauvage", kicker:"Eau de Toilette", gender:"hombre",
-      desc:"Bergamota fresca y pimienta de Sichuán sobre una base de ambroxan. Masculino, potente y muy versátil.",
-      oz:"3.4", price:"105", images:[] },
-    { id:"default-3", name:"Bleu de Chanel", kicker:"Eau de Parfum", gender:"hombre",
-      desc:"Cítricos y madera de cedro con un fondo amaderado-aromático. Un clásico moderno para el uso diario.",
-      oz:"3.4", price:"135", images:[] },
-    { id:"default-4", name:"Yves Saint Laurent Black Opium", kicker:"Eau de Parfum", gender:"mujer",
-      desc:"Café negro, vainilla y flor de azahar. Adictivo, dulce e intenso, pensado para la noche.",
-      oz:"3", price:"115", images:[] },
-    { id:"default-5", name:"Paco Rabanne Invictus", kicker:"Eau de Toilette", gender:"hombre",
-      desc:"Notas marinas, pomelo y madera de guayaco. Fresco, deportivo y con gran proyección.",
-      oz:"3.4", price:"85", images:[] },
-    { id:"default-6", name:"Carolina Herrera Good Girl", kicker:"Eau de Parfum", gender:"mujer",
-      desc:"Almendra y jazmín sambac sobre cacao y tonka. Contraste entre dulzura y sensualidad.",
-      oz:"2.7", price:"120", images:[] },
-    { id:"default-7", name:"Versace Eros", kicker:"Eau de Toilette", gender:"hombre",
-      desc:"Menta, manzana verde y vainilla con haba tonka. Fresco, dulce y de larga duración.",
-      oz:"3.4", price:"90", images:[] },
-    { id:"default-8", name:"Giorgio Armani Acqua di Giò", kicker:"Eau de Toilette", gender:"hombre",
-      desc:"Notas acuáticas, cítricos y salvia bajo una base amaderada-marina. El clásico fresco por excelencia.",
-      oz:"3.4", price:"95", images:[] },
-    { id:"default-9", name:"Tom Ford Black Orchid", kicker:"Eau de Parfum", gender:"unisex",
-      desc:"Orquídea negra, trufa y especias sobre chocolate y pachulí. Lujoso, denso y muy envolvente.",
-      oz:"1.7", price:"145", images:[] },
-    { id:"default-10", name:"Dolce & Gabbana Light Blue", kicker:"Eau de Toilette", gender:"mujer",
-      desc:"Limón siciliano, manzana y cedro sobre almizcle blanco. Ligero, cítrico y perfecto para el día.",
-      oz:"3.3", price:"88", images:[] },
-    { id:"default-11", name:"Lancôme La Vie Est Belle", kicker:"Eau de Parfum", gender:"mujer",
-      desc:"Iris, jazmín y praliné sobre vainilla y pachulí. Un gourmand floral cálido y femenino.",
-      oz:"3.4", price:"128", images:[] },
-    { id:"default-12", name:"Jean Paul Gaultier Le Male", kicker:"Eau de Toilette", gender:"hombre",
-      desc:"Lavanda, menta y vainilla sobre una base amaderada. Un clásico masculino reconocible al instante.",
-      oz:"4.2", price:"98", images:[] }
-  ];
-
-  // Normaliza perfumes guardados previamente (que usaban "img" en vez de "images")
-  function normalizePerfume(p){
-    if (!p.images){
-      p.images = p.img ? [p.img] : [];
-    }
-    if (!p.gender) p.gender = "unisex";
-    return p;
-  }
-
-  function loadPerfumes(){
-    try{
-      const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if (Array.isArray(stored) && stored.length) return stored.map(normalizePerfume);
-    }catch(e){}
-    return DEFAULT_PERFUMES.slice().map(normalizePerfume);
-  }
-  function savePerfumes(list){ localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
-
-  let perfumes = loadPerfumes();
-  let unlocked = false; // se reinicia en cada carga: solo activo cuando TÚ ingresas la contraseña
-  let activeGenderFilter = "todos";
-  let activePriceFilter = "todos";
-  let cardImgIndex = {}; // índice de imagen actual mostrado por tarjeta (para las flechas)
-
-  function getGenderLabel(g){
-    if (g === "hombre") return "Hombre";
-    if (g === "mujer") return "Mujer";
-    return "Unisex";
-  }
-
-  function getFilteredPerfumes(){
-    return perfumes.filter(p=>{
-      if (activeGenderFilter !== "todos" && p.gender !== activeGenderFilter) return false;
-      if (activePriceFilter !== "todos"){
-        const [min,max] = activePriceFilter.split("-").map(Number);
-        const price = parseFloat(p.price) || 0;
-        if (price < min || price > max) return false;
-      }
-      return true;
-    });
-  }
-
-  const bottleSVG = `
-    <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg">
-      <rect x="40" y="10" width="40" height="22" rx="4" fill="#b8923f"/>
-      <rect x="50" y="0" width="20" height="14" rx="2" fill="#8a6e2f"/>
-      <rect x="30" y="32" width="60" height="150" rx="10" fill="#0f3d27" stroke="#3ddc84" stroke-width="2"/>
-      <rect x="38" y="70" width="44" height="60" fill="#3ddc84" opacity="0.35"/>
-    </svg>`;
-
-  /* ---------- Vitrina del hero: van pasando fotos reales del catálogo ---------- */
-  const heroArtEl = document.getElementById("heroArt");
-  const DEFAULT_HERO_HTML = heroArtEl.innerHTML; // ilustración de respaldo si aún no hay fotos reales
-  let heroItems = [];
-  let heroIndex = 0;
-  let heroTimer = null;
-
-  function renderHeroShowcase(){
-    clearInterval(heroTimer);
-    heroItems = perfumes.filter(p => p.images && p.images.length);
-    if (!heroItems.length){
-      heroArtEl.innerHTML = DEFAULT_HERO_HTML;
-      return;
-    }
-    heroIndex = 0;
-    heroArtEl.innerHTML = `
-      <img class="hero-showcase-img fade-in" id="heroShowcaseImg" src="${heroItems[0].images[0]}" alt="${heroItems[0].name}">
-      <div class="hero-showcase-caption" id="heroShowcaseCaption">${heroItems[0].name}</div>
-    `;
-    if (heroItems.length > 1){
-      heroTimer = setInterval(()=>{
-        heroIndex = (heroIndex + 1) % heroItems.length;
-        const img = document.getElementById("heroShowcaseImg");
-        const cap = document.getElementById("heroShowcaseCaption");
-        if (!img) return;
-        img.classList.remove("fade-in");
-        void img.offsetWidth;
-        img.src = heroItems[heroIndex].images[0];
-        img.alt = heroItems[heroIndex].name;
-        cap.textContent = heroItems[heroIndex].name;
-        img.classList.add("fade-in");
-      }, 3800);
-    }
-  }
-
-  /* ---------- CARRITO (guardar sin comprar, con cantidad) ---------- */
-  function loadCart(){
-    try{
-      const stored = JSON.parse(localStorage.getItem(CART_KEY));
-      if (Array.isArray(stored)){
-        // compatibilidad con el formato antiguo (array de ids)
-        return stored.map(x => typeof x === "string" ? { id:x, qty:1 } : x);
-      }
-    }catch(e){}
-    return [];
-  }
-  function saveCart(list){ localStorage.setItem(CART_KEY, JSON.stringify(list)); }
-  let cart = loadCart();
-  let cartSelected = new Set(); // ids marcados con el check grande: "comprar ahora"
-
-  function isInCart(id){ return cart.some(c => c.id === id); }
-  function toggleCart(id){
-    if (isInCart(id)) { cart = cart.filter(x => x.id !== id); cartSelected.delete(id); }
-    else cart.push({ id, qty:1 });
-    saveCart(cart);
-    renderCartBadge();
-  }
-  function setQty(id, qty){
-    const item = cart.find(c => c.id === id);
-    if (!item) return;
-    if (qty <= 0){ cart = cart.filter(c => c.id !== id); cartSelected.delete(id); }
-    else item.qty = qty;
-    saveCart(cart);
-    renderCartBadge();
-  }
-  function renderCartBadge(){
-    document.getElementById("cartCount").textContent = cart.reduce((sum,c)=>sum+c.qty,0);
-  }
-  function renderCartPanel(){
-    const list = document.getElementById("cartList");
-    if (!cart.length){
-      list.innerHTML = `<p class="cart-empty">Todavía no has guardado ningún perfume. Toca el ícono de marcador en una fragancia para guardarla aquí.</p>`;
-      return;
-    }
-    list.innerHTML = cart.map(c => {
-      const p = perfumes.find(x => x.id === c.id);
-      if (!p) return "";
-      const img = (p.images && p.images[0]) ? `<img src="${p.images[0]}" alt="${p.name}">` : bottleSVG;
-      return `
-      <div class="cart-item">
-        <button class="cart-item-trash" data-id="${p.id}" aria-label="Quitar del carrito">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
-        </button>
-        <div class="cart-item-media">${img}</div>
-        <div class="cart-item-info">
-          <h4>${p.name}</h4>
-          <p>${p.kicker || "Fragancia"} · ${p.oz} oz</p>
-          <p class="cart-type">Tipo: ${getGenderLabel(p.gender)}</p>
-          <div class="cart-qty">
-            <button class="qty-minus" data-id="${p.id}" aria-label="Restar">−</button>
-            <span>${c.qty}</span>
-            <button class="qty-plus" data-id="${p.id}" aria-label="Sumar">+</button>
-          </div>
-        </div>
-        <div class="cart-item-actions">
-          <div class="price">${p.price ? "$"+p.price : ""}</div>
-          <button class="cart-check" data-id="${p.id}" data-selected="${cartSelected.has(p.id) ? 1 : 0}" aria-label="Marcar para comprar ahora">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-        </div>
-      </div>`;
-    }).join("") + `
-      <div class="cart-bulk-row">
-        <button class="btn btn-solid" id="cartSendSelected" style="width:100%;">Enviar seleccionados por WhatsApp</button>
-        <p class="cart-bulk-hint">Marca el check en los que quieras comprar ahora; los demás se quedan guardados para más tarde.</p>
-      </div>
-    `;
-
-    list.querySelectorAll(".cart-check").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const id = btn.getAttribute("data-id");
-        if (cartSelected.has(id)) cartSelected.delete(id);
-        else cartSelected.add(id);
-        btn.setAttribute("data-selected", cartSelected.has(id) ? "1" : "0");
-      });
-    });
-    list.querySelectorAll(".cart-item-trash").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        toggleCart(btn.getAttribute("data-id"));
-        renderCartPanel();
-        render();
-      });
-    });
-    list.querySelectorAll(".qty-minus").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const id = btn.getAttribute("data-id");
-        const item = cart.find(c=>c.id===id);
-        if (item) setQty(id, item.qty - 1);
-        renderCartPanel();
-        render();
-      });
-    });
-    list.querySelectorAll(".qty-plus").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const id = btn.getAttribute("data-id");
-        const item = cart.find(c=>c.id===id);
-        if (item) setQty(id, item.qty + 1);
-        renderCartPanel();
-      });
-    });
-    const sendBtn = document.getElementById("cartSendSelected");
-    if (sendBtn){
-      sendBtn.addEventListener("click", ()=>{
-        const selected = cart.filter(c => cartSelected.has(c.id))
-          .map(c => ({ p: perfumes.find(p => p.id === c.id), qty:c.qty }))
-          .filter(x => x.p);
-        if (!selected.length) return;
-        sendToWhatsApp(selected);
-      });
-    }
-  }
-
-  /* ---------- WhatsApp: mensaje personalizado con nombre, cantidad, precio y foto(s) ---------- */
-  async function sendToWhatsApp(entries){
-    // entries: array de { p: perfume, qty: number }
-    if (!entries.length) return;
-    let text;
-    if (entries.length === 1){
-      const { p, qty } = entries[0];
-      text = `¡Hola! Me interesa el perfume *${p.name}* (${p.oz} oz, ${getGenderLabel(p.gender)})`;
-      if (qty > 1) text += ` x${qty}`;
-      text += p.price ? `, precio $${p.price} c/u.` : ".";
-    } else {
-      text = "¡Hola! Me interesan estos perfumes:\n";
-      entries.forEach(({p,qty})=>{
-        text += `• ${p.name} (${p.oz} oz)${qty > 1 ? " x"+qty : ""}${p.price ? " - $"+p.price : ""}\n`;
-      });
-    }
-
-    // Incluir la(s) foto(s) en el mensaje (solo enlaces http, no data-URLs)
-    entries.forEach(({p})=>{
-      (p.images || []).forEach(img=>{
-        if (img && /^https?:\/\//i.test(img)) {
-          text += `\n📷 Foto ${p.name}: ${img}`;
-        }
-      });
-    });
-
-    text += `\n¿Me confirman disponibilidad?`;
-    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
-
-    // Para imágenes locales (data:image) se intenta compartir via navigator.share
-    const localImgs = [];
-    entries.forEach(({p})=>{
-      (p.images || []).forEach(img=>{
-        if (img && img.startsWith("data:")) localImgs.push({ name:p.name, img });
-      });
-    });
-    if (localImgs.length && navigator.share) {
-      try{
-        const files = await Promise.all(localImgs.map(async (item, i)=>{
-          const res = await fetch(item.img);
-          const blob = await res.blob();
-          const ext = (blob.type.split("/")[1] || "jpg").replace("jpeg","jpg");
-          return new File([blob], `${item.name}-${i}.${ext}`, { type: blob.type });
-        }));
-        if (!navigator.canShare || navigator.canShare({ files })) {
-          await navigator.share({ files, text });
-          return;
-        }
-      }catch(e){ /* si falla o la persona cancela, seguimos con el enlace normal de WhatsApp */ }
-    }
-    window.open(waUrl, "_blank");
-  }
-
-  function openWhatsApp(p){
-    const inCart = cart.find(c=>c.id===p.id);
-    return sendToWhatsApp([{ p, qty: inCart ? inCart.qty : 1 }]);
-  }
-
-  /* ---------- Ticker: carrusel de recomendaciones + frases promocionales ---------- */
-  const PROMO_LINES = [
-    "Coordinamos tu entrega directo por WhatsApp",
-    "Atención personalizada para elegir tu fragancia ideal",
-    "Nuevas esencias cada temporada"
-  ];
-  let tickerItems = [];
-  let tickerIndex = 0;
-  let tickerTimer = null;
-
-  function buildTickerItems(){
-    const recs = perfumes.map(p => `Recomendado: ${p.name}${p.price ? " — $"+p.price : ""}`);
-    const items = [];
-    const max = Math.max(recs.length, PROMO_LINES.length);
-    for (let i = 0; i < max; i++){
-      if (recs[i]) items.push(recs[i]);
-      if (PROMO_LINES[i]) items.push(PROMO_LINES[i]);
-    }
-    return items.length ? items : ["Bienvenido a Magic Elixir"];
-  }
-  function showTickerSlide(){
-    const slide = document.getElementById("tickerSlide");
-    slide.textContent = tickerItems[tickerIndex];
-    slide.classList.remove("fade-in");
-    void slide.offsetWidth; // reinicia la animación de entrada
-    slide.classList.add("fade-in");
-  }
-  function tickerNext(){
-    tickerIndex = (tickerIndex + 1) % tickerItems.length;
-    showTickerSlide();
-  }
-  function tickerPrev(){
-    tickerIndex = (tickerIndex - 1 + tickerItems.length) % tickerItems.length;
-    showTickerSlide();
-  }
-  function restartTickerAuto(){
-    clearInterval(tickerTimer);
-    tickerTimer = setInterval(tickerNext, 4500);
-  }
-  function renderTicker(){
-    tickerItems = buildTickerItems();
-    tickerIndex = 0;
-    showTickerSlide();
-    restartTickerAuto();
-  }
-
-  function render(){
-    const grid = document.getElementById("grid");
-    const countLabel = document.getElementById("countLabel");
-    grid.innerHTML = "";
-    const visible = getFilteredPerfumes();
-    visible.forEach(p => {
-      const card = document.createElement("div");
-      card.className = "card";
-      const imgs = p.images || [];
-      if (!(p.id in cardImgIndex)) cardImgIndex[p.id] = 0;
-      const idx = cardImgIndex[p.id] % Math.max(imgs.length, 1);
-      const media = imgs.length ? `<img src="${imgs[idx]}" alt="${p.name}">` : bottleSVG;
-      const saved = isInCart(p.id);
-      const arrows = imgs.length > 1 ? `
-        <button class="img-arrow prev" data-id="${p.id}" aria-label="Foto anterior">‹</button>
-        <button class="img-arrow next" data-id="${p.id}" aria-label="Foto siguiente">›</button>
-        <div class="img-dots">${imgs.map((_,i)=>`<span data-active="${i===idx?1:0}"></span>`).join("")}</div>
-      ` : "";
-      card.innerHTML = `
-        <div class="card-media">
-          ${media}
-          ${arrows}
-          <button class="save-btn" data-id="${p.id}" data-saved="${saved ? 1 : 0}" aria-label="Guardar en el carrito">
-            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-            </svg>
-          </button>
-        </div>
-        <div class="card-body">
-          <div class="kicker">${p.kicker || "Fragancia"}<span class="card-gender-tag">${getGenderLabel(p.gender)}</span></div>
-          <h3>${p.name}</h3>
-          <p class="desc">${p.desc || "Fragancia disponible en nuestra colección Magic Elixir."}</p>
-          <div class="card-footer">
-            <div>
-              <div class="price">${p.price ? "$"+p.price : ""}</div>
-              <div class="oz">${p.oz} oz</div>
+  async function cargarPerfumes() {
+    const grid = document.getElementById('grid');
+    const countLabel = document.getElementById('countLabel');
+    
+    try {
+      // Nota: Para hacerlo funcionar al 100%, creas un Google Sheets con columnas: nombre, marca, descripcion, precio, imagen, whatsapp_link
+      // Por ahora dejamos una lista de ejemplo conectada:
+      grid.innerHTML = `
+        <div class="card">
+          <div class="card-media"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600" alt="Perfume"></div>
+          <div class="card-body">
+            <span class="kicker">MAGIC ELIXIR</span>
+            <h3>Royal Wood</h3>
+            <p class="desc">Notas amaderadas y especiadas de larga duración para hombres y mujeres.</p>
+            <div class="card-footer">
+              <span class="price">$85.00</span>
+              <a href="https://wa.me/18090000000?text=Hola,%20quiero%20pedir%20el%20perfume%20Royal%20Wood" target="_blank" class="buy-btn">Pedir por WhatsApp</a>
             </div>
-            <button class="buy-btn" data-id="${p.id}">Comprar</button>
           </div>
-          ${unlocked ? `<button class="card-del" data-id="${p.id}">Eliminar</button>` : ""}
         </div>
       `;
-      grid.appendChild(card);
-    });
-    countLabel.textContent = visible.length + (visible.length === 1 ? " fragancia" : " fragancias");
-
-    grid.querySelectorAll(".buy-btn").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const p = perfumes.find(x => x.id === btn.getAttribute("data-id"));
-        if (p) openWhatsApp(p);
-      });
-    });
-
-    grid.querySelectorAll(".save-btn").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        toggleCart(btn.getAttribute("data-id"));
-        btn.setAttribute("data-saved", isInCart(btn.getAttribute("data-id")) ? "1" : "0");
-      });
-    });
-
-    grid.querySelectorAll(".img-arrow.prev").forEach(btn=>{
-      btn.addEventListener("click", (e)=>{
-        e.stopPropagation();
-        const id = btn.getAttribute("data-id");
-        const p = perfumes.find(x=>x.id===id);
-        const len = (p.images||[]).length || 1;
-        cardImgIndex[id] = (cardImgIndex[id] - 1 + len) % len;
-        render();
-      });
-    });
-    grid.querySelectorAll(".img-arrow.next").forEach(btn=>{
-      btn.addEventListener("click", (e)=>{
-        e.stopPropagation();
-        const id = btn.getAttribute("data-id");
-        const p = perfumes.find(x=>x.id===id);
-        const len = (p.images||[]).length || 1;
-        cardImgIndex[id] = (cardImgIndex[id] + 1) % len;
-        render();
-      });
-    });
-
-    grid.querySelectorAll(".card-del").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const id = btn.getAttribute("data-id");
-        perfumes = perfumes.filter(p => p.id !== id);
-        cart = cart.filter(x => x.id !== id);
-        savePerfumes(perfumes);
-        saveCart(cart);
-        render();
-        renderAdminList();
-        renderCartBadge();
-      });
-    });
-
-    renderTicker();
-    renderCartBadge();
-    renderHeroShowcase();
-  }
-
-  function renderAdminList(){
-    const list = document.getElementById("adminList");
-    if (!perfumes.length){ list.innerHTML = ""; return; }
-    list.innerHTML = "<strong style='font-size:.8rem;color:#8a7d6d;'>Perfumes en el catálogo</strong>" +
-      perfumes.map(p => `
-        <div>
-          <span>${p.name} — ${p.oz} oz</span>
-          <button data-id="${p.id}">Eliminar</button>
-        </div>
-      `).join("");
-    list.querySelectorAll("button").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const id = btn.getAttribute("data-id");
-        perfumes = perfumes.filter(p => p.id !== id);
-        savePerfumes(perfumes);
-        render();
-        renderAdminList();
-      });
-    });
-  }
-
-  /* ---------- PREFERENCIAS: zoom de página + modo oscuro ---------- */
-  const ZOOM_BASE_PX = 18; // 100% de zoom equivale a 18px de fuente raíz
-  function loadPrefs(){
-    try{
-      const p = JSON.parse(localStorage.getItem(PREFS_KEY));
-      if (p && typeof p.zoom === "number") return p;
-    }catch(e){}
-    return { zoom:80, dark:false };
-  }
-  function savePrefs(p){ localStorage.setItem(PREFS_KEY, JSON.stringify(p)); }
-
-  let prefs = loadPrefs();
-
-  function applyPrefs(){
-    document.documentElement.style.fontSize = (ZOOM_BASE_PX * prefs.zoom / 100) + "px";
-    document.body.classList.toggle("dark", prefs.dark);
-    document.getElementById("darkToggle").checked = prefs.dark;
-    document.getElementById("zoomValue").textContent = prefs.zoom + "%";
-  }
-
-  document.getElementById("zoomOut").addEventListener("click", ()=>{
-    prefs.zoom = Math.max(50, prefs.zoom - 10);
-    savePrefs(prefs); applyPrefs();
-  });
-  document.getElementById("zoomIn").addEventListener("click", ()=>{
-    prefs.zoom = Math.min(150, prefs.zoom + 10);
-    savePrefs(prefs); applyPrefs();
-  });
-  document.getElementById("zoomReset").addEventListener("click", ()=>{
-    prefs.zoom = 80;
-    savePrefs(prefs); applyPrefs();
-  });
-
-  document.getElementById("darkToggle").addEventListener("change",(e)=>{
-    prefs.dark = e.target.checked;
-    savePrefs(prefs); applyPrefs();
-  });
-
-  document.getElementById("resetPrefs").addEventListener("click",()=>{
-    prefs = { zoom:80, dark:false };
-    savePrefs(prefs); applyPrefs();
-  });
-
-  /* ---------- FILTROS: género y precio ---------- */
-  document.getElementById("genderFilter").addEventListener("click",(e)=>{
-    const btn = e.target.closest(".filter-chip");
-    if(!btn) return;
-    activeGenderFilter = btn.getAttribute("data-gender");
-    document.querySelectorAll("#genderFilter .filter-chip").forEach(b=>b.removeAttribute("data-active"));
-    btn.setAttribute("data-active","1");
-    render();
-  });
-  document.getElementById("priceFilter").addEventListener("change",(e)=>{
-    activePriceFilter = e.target.value;
-    render();
-  });
-
-  /* ---------- WHATSAPP flotante: ayuda personalizada ---------- */
-  document.getElementById("waBtn").addEventListener("click", ()=>{
-    const text = "¡Hola! Me gustaría recibir ayuda personalizada para elegir un perfume.";
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
-  });
-
-  /* ---------- OFERTA DE BIENVENIDA (solo primera visita) ---------- */
-  const WELCOME_KEY = "magicelixir_welcome_seen_v1";
-  const welcomeOverlay = document.getElementById("welcomeOverlay");
-  function closeWelcome(){
-    localStorage.setItem(WELCOME_KEY, "1");
-    welcomeOverlay.classList.remove("show");
-  }
-  if (!localStorage.getItem(WELCOME_KEY)){
-    setTimeout(()=> welcomeOverlay.classList.add("show"), 600);
-  }
-  document.getElementById("welcomeSkip").addEventListener("click", closeWelcome);
-  document.getElementById("welcomeClose").addEventListener("click", closeWelcome);
-  document.getElementById("welcomeSubmit").addEventListener("click", ()=>{
-    const email = document.getElementById("welcomeEmail").value.trim();
-    const errorEl = document.getElementById("welcomeError");
-    const okEl = document.getElementById("welcomeOk");
-    if (!email || !email.includes("@")){
-      errorEl.style.display = "block";
-      okEl.style.display = "none";
-      return;
-    }
-    errorEl.style.display = "none";
-    okEl.style.display = "block";
-    localStorage.setItem(WELCOME_KEY, "1");
-    setTimeout(()=> welcomeOverlay.classList.remove("show"), 1800);
-  });
-
-  /* ---------- Panel de engranaje ---------- */
-  const gearBtn = document.getElementById("gearBtn");
-  const settingsPanel = document.getElementById("settingsPanel");
-
-  gearBtn.addEventListener("click", ()=>{
-    settingsPanel.classList.toggle("show");
-  });
-  document.addEventListener("click",(e)=>{
-    if (!settingsPanel.contains(e.target) && !gearBtn.contains(e.target)){
-      settingsPanel.classList.remove("show");
-    }
-  });
-
-  /* ---------- Flechas del banner de anuncios ---------- */
-  document.getElementById("tickerPrev").addEventListener("click", ()=>{
-    tickerPrev();
-    restartTickerAuto();
-  });
-  document.getElementById("tickerNext").addEventListener("click", ()=>{
-    tickerNext();
-    restartTickerAuto();
-  });
-
-  /* ---------- Carrito ---------- */
-  const cartBtn = document.getElementById("cartBtn");
-  const cartOverlay = document.getElementById("cartOverlay");
-  cartBtn.addEventListener("click", ()=>{
-    renderCartPanel();
-    cartOverlay.classList.add("show");
-  });
-
-  /* ---------- Zona desarrollador (dentro del engranaje) ---------- */
-  const devZone = document.getElementById("devZone");
-  const loginOverlay = document.getElementById("loginOverlay");
-  const adminOverlay = document.getElementById("adminOverlay");
-
-  function renderDevZone(){
-    if (!unlocked){
-      devZone.innerHTML = `<button class="dev-link" id="devLink">Acceso desarrollador</button>`;
-      document.getElementById("devLink").addEventListener("click", ()=>{
-        document.getElementById("pwInput").value = "";
-        document.getElementById("pwError").style.display = "none";
-        loginOverlay.classList.add("show");
-      });
-    } else {
-      devZone.innerHTML = `
-        <div class="dev-active-row"><span><span class="dot"></span>Modo edición activo</span></div>
-        <div class="dev-links">
-          <button id="openAdmin">Agregar perfume</button>
-          <button id="lockDev">Bloquear</button>
-        </div>`;
-      document.getElementById("openAdmin").addEventListener("click", ()=>{
-        document.getElementById("pName").value = "";
-        document.getElementById("pOz").value = "";
-        document.getElementById("pPrice").value = "";
-        document.getElementById("pPhoto").value = "";
-        document.querySelectorAll('input[name="pGender"]').forEach(r => r.checked = false);
-        document.getElementById("adminError").style.display = "none";
-        document.getElementById("adminOk").style.display = "none";
-        renderAdminList();
-        adminOverlay.classList.add("show");
-      });
-      document.getElementById("lockDev").addEventListener("click", ()=>{
-        unlocked = false;
-        renderDevZone();
-        render();
-      });
+      countLabel.textContent = "1 fragancia disponible";
+    } catch (e) {
+      grid.innerHTML = '<p style="padding:20px;">Error al cargar los productos. Intenta recargar.</p>';
     }
   }
 
-  document.querySelectorAll("[data-close]").forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      document.getElementById(btn.getAttribute("data-close")).classList.remove("show");
-    });
-  });
-  [loginOverlay, adminOverlay, cartOverlay, welcomeOverlay].forEach(ov=>{
-    ov.addEventListener("click",(e)=>{
-      if (e.target === ov){
-        ov.classList.remove("show");
-        if (ov === welcomeOverlay) localStorage.setItem(WELCOME_KEY, "1");
-      }
-    });
-  });
-
-  document.getElementById("pwSubmit").addEventListener("click", ()=>{
-    const val = document.getElementById("pwInput").value;
-    if (val === DEV_PASSWORD){
-      unlocked = true;
-      loginOverlay.classList.remove("show");
-      renderDevZone();
-      render();
-    } else {
-      document.getElementById("pwError").style.display = "block";
-    }
-  });
-  document.getElementById("pwInput").addEventListener("keydown",(e)=>{
-    if (e.key === "Enter") document.getElementById("pwSubmit").click();
-  });
-
-  document.getElementById("pSubmit").addEventListener("click", ()=>{
-    const name = document.getElementById("pName").value.trim();
-    const oz = document.getElementById("pOz").value.trim();
-    const price = document.getElementById("pPrice").value.trim();
-    const fileInput = document.getElementById("pPhoto");
-    const genderInput = document.querySelector('input[name="pGender"]:checked');
-    const errorEl = document.getElementById("adminError");
-    const okEl = document.getElementById("adminOk");
-    okEl.style.display = "none";
-
-    if (!name || !oz || !genderInput || !fileInput.files.length){
-      errorEl.textContent = "Completa nombre, onzas, para quién es y al menos una foto.";
-      errorEl.style.display = "block";
-      return;
-    }
-    errorEl.style.display = "none";
-
-    const files = Array.from(fileInput.files);
-    Promise.all(files.map(file => new Promise((resolve, reject)=>{
-      const reader = new FileReader();
-      reader.onload = ev => resolve(ev.target.result);
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    }))).then(images => {
-      perfumes.push({
-        id:"p-"+Date.now(), name:name, kicker:"Fragancia",
-        desc:"Fragancia disponible en nuestra colección Magic Elixir.",
-        oz:oz, price:price, gender:genderInput.value, images:images
-      });
-      savePerfumes(perfumes);
-      render();
-      renderAdminList();
-      okEl.style.display = "block";
-      document.getElementById("pName").value = "";
-      document.getElementById("pOz").value = "";
-      document.getElementById("pPrice").value = "";
-      document.getElementById("pPhoto").value = "";
-      document.querySelectorAll('input[name="pGender"]').forEach(r => r.checked = false);
-    });
-  });
-
-  applyPrefs();
-  renderDevZone();
-  render();
+  cargarPerfumes();
 </script>
-
 </body>
 </html>
