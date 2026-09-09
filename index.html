@@ -15,17 +15,16 @@
     --charcoal:#20241f;
     --line:#d7ddd0;
     --emerald-glow:#3ddc84;
-    --font-family:'Jost',sans-serif;
+    --custom-font: 'Jost', sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;font-size:16px;transition:font-size .15s;}
+  html{scroll-behavior:smooth;font-size:16px;}
   body{
     background:var(--ivory);
     color:var(--charcoal);
-    font-family:var(--font-family);
+    font-family: var(--custom-font);
     font-weight:300;
     -webkit-font-smoothing:antialiased;
-    transition:background .25s, color .25s;
   }
   h1,h2,h3,.serif{
     font-family:'Cormorant Garamond',serif;
@@ -37,14 +36,16 @@
 
   /* ---------- BARRA DE ACCESIBILIDAD / CONTROLES ---------- */
   .accessibility-bar{
-    background:#163224;color:#d7ddd0;padding:6px 24px;font-size:.8rem;
-    display:flex;justify-content:flex-end;align-items:center;gap:16px;
+    background:#163224;color:#d7ddd0;padding:8px 24px;font-size:.85rem;
+    display:flex;justify-content:flex-end;align-items:center;gap:20px;
+    border-bottom:1px solid #2a523d;
   }
   .accessibility-bar button, .accessibility-bar select{
-    background:rgba(255,255,255,0.1);border:1px solid #2a523d;color:#fff;
-    padding:3px 8px;border-radius:4px;cursor:pointer;font-size:.78rem;font-family:inherit;
+    background:rgba(255,255,255,0.15);border:1px solid #3ddc84;color:#fff;
+    padding:4px 10px;border-radius:4px;cursor:pointer;font-size:.8rem;font-family:inherit;
   }
-  .accessibility-bar button:hover{background:rgba(255,255,255,0.2);}
+  .accessibility-bar button:hover{background:rgba(255,255,255,0.3);}
+  .accessibility-bar select option { background: #163224; color: #fff; }
 
   /* ---------- TICKER / PUBLICIDAD ---------- */
   .ticker-wrap{
@@ -214,14 +215,14 @@
 <div class="accessibility-bar">
   <div>
     <span>Tamaño texto:</span>
-    <button onclick="cambiarTamanio(-1)">A-</button>
-    <button onclick="cambiarTamanio(1)">A+</button>
+    <button type="button" onclick="cambiarTamanio(-1)">A-</button>
+    <button type="button" onclick="cambiarTamanio(1)">A+</button>
   </div>
   <div>
     <span>Tipografía:</span>
     <select id="fontSelector" onchange="cambiarTipografia(this.value)">
       <option value="'Jost', sans-serif">Jost (Moderna)</option>
-      <option value="'Playfair Display', serif">Playfair Display (Clásica)</option>
+      <option value="'Playfair Display', serif">Playfair (Clásica)</option>
       <option value="Arial, sans-serif">Arial (Simple)</option>
     </select>
   </div>
@@ -310,7 +311,7 @@
   }
 
   function cambiarTipografia(font) {
-    document.documentElement.style.setProperty('--font-family', font);
+    document.documentElement.style.setProperty('--custom-font', font);
   }
 </script>
 
